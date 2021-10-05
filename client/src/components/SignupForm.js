@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
+import { useMutation } from '@apollo/react-hooks';
+import { ADD_USER } from '../utils/mutations';
 
 import { createUser } from '../utils/API';
 import Auth from '../utils/auth';
@@ -19,6 +21,9 @@ const SignupForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+
+    const [addUser] = useMutation(ADD_USER);
+
 
     // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
